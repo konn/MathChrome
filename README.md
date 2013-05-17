@@ -7,7 +7,7 @@ This is the extension to render maths using [MathJax](http://www.mathjax.org/) i
 
 Installation
 ------------
-1. [Download latest extension]() and decompress.
+1. [Download latest extension](https://github.com/konn/MathChrome/blob/master/MathChrome.crx?raw=true) and decompress.
 2. Open "Extensions" Window in Google Chrome
 3. Drag&Drop MathChrome.crx onto the Extensions window.
 
