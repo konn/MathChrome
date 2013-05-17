@@ -1,0 +1,21 @@
+{
+    "name": "MathChrome",
+    "version": "0.1",
+    "content_scripts": [ {
+	"js": [ "jquery-min-1.7.2.js", "purl.js", "content.js" ],
+	"run_at": "document_end",
+	"matches": [ "\u003Call_urls\u003E" ]
+    } ],
+    
+    "description": "Re-renders maths by Google Charts or mimetex using MathJax.",
+    "icons": {
+	"48" : "icon-48.jpg",
+	"16" : "icon-16.jpg",
+	"128": "icon-128.jpg"
+    },
+    "browser_action": {
+	"default_icon": "icon-48.jpg",
+	"default_title": "MathChrome"
+    },
+    "manifest_version": 2
+}
