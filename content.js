@@ -18,7 +18,7 @@ function getMath(obj){
     var type = url.attr('file');
     var tex;
     if (type == 'mimetex.cgi') {
-	tex = decodeURIComponent(url.attr("query")).replace(/\~/g, " ");
+	tex = decodeURIComponent(url.attr("query")).replace(/\~/g, " ").replace(/^(\d+\$)?/g, "");
     } else if (url.attr("host") == "chart.apis.google.com" && url.param('cht') == 'tx') {
 	tex = url.param("chl");
     } else if ($.url().attr("host") == "hooktail.sub.jp") {
@@ -30,7 +30,8 @@ function getMath(obj){
     } else if (isLaTeX2HTML) {
 	tex = obj.attr('alt').slice(1,-1);
     };
-    return tex.replace(/￥|¥/g, '\\');
+    return tex.replace(/\￥|\¥/g, '\\').replace(/\\hspace\{(\d+)\}/g, " ")
+	      .replace(/\\([\(\[])/g, "\\left$1").replace(/\\([\)\]])/g, "\\right$1");
 };
 
 function isDisplay(obj) {
@@ -51,7 +52,8 @@ if (els.length) {
     });
     $('script').append('<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {\
       Macros: {\
-	bm:         ["{\\\\bf #1}",1]\
+	bm:         ["{\\\\bf #1}",1],\
+        limits: ""\
       }\
     }\
   });</script>');
